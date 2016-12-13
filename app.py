@@ -32,7 +32,6 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "rallyGetStoryDetails" and \
         req.get("result").get("action") != "rallyUpdateState":
-        
         return {}
     #baseurl = "http://localhost:8888/userstory/"
     baseurl = "https://rallyhelper3.herokuapp.com/userstory/"
@@ -44,8 +43,11 @@ def processRequest(req):
     
     if req.get("result").get("action") == "rallyGetStoryDetails":
         print "got the get details"
-        resp = requests.get(baseurl+"US"+userStoryNumber,
+        finalurl = baseurl+"US"+userStoryNumber
+        print finalurl
+        resp = requests.get(finalurl,
                 headers={'Content-Type': 'Application/Json'})
+        print resp.status_code
         response = json.loads(resp.text)
         print response
     
@@ -89,8 +91,6 @@ def makeWebhookResult(resp):
         return {}
     
 
-    speech = "UserStory: " + storyName + ": " + "State:" + storyScheduledState +\
-             ", Story Owner: " + storyOwner + " Assigned To: " + storyAssignedTeam
 
     print("Response:")
     print(speech)
