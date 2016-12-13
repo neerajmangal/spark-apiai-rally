@@ -42,14 +42,14 @@ def processRequest(req):
     print parameters
     print userStoryNumber
     
-    if req.get("result").get("action") != "rallyGetStoryDetails":
+    if req.get("result").get("action") == "rallyGetStoryDetails":
         print "got the get details"
         resp = requests.get(baseurl+"US"+userStoryNumber,
                 headers={'Content-Type': 'Application/Json'})
         response = json.loads(resp.text)
         print response
     
-    if req.get("result").get("action") != "rallyUpdateState":
+    if req.get("result").get("action") == "rallyUpdateState":
         state = parameters.get("State")
         print state
         payload = {"state": state}
