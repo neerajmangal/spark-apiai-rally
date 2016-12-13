@@ -91,6 +91,10 @@ def makeWebhookResult(resp):
         return {}
     
 
+    speech = "**UserStory:** " + storyName + \
+             "\n **State:**" + storyScheduledState +\
+             "\n **Story Owner: ** " + storyOwner + \
+             "\n **Team Assigned:**" + storyAssignedTeam
 
     print("Response:")
     print(speech)
