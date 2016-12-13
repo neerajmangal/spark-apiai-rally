@@ -92,7 +92,7 @@ def makeWebhookResult(resp):
     
 
     speech = "**UserStory:** " + storyName + \
-             "\n **State:**" + storyScheduledState +\
+             "\n **State:**" + storyScheduledState + \
              "\n **Story Owner: ** " + storyOwner + \
              "\n **Team Assigned:**" + storyAssignedTeam
 
