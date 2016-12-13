@@ -30,8 +30,9 @@ def webhook():
     return r
 
 def processRequest(req):
-    if req.get("result").get("action") != "rallyGetStoryDetails" or \
+    if req.get("result").get("action") != "rallyGetStoryDetails" and \
         req.get("result").get("action") != "rallyUpdateState":
+        
         return {}
     #baseurl = "http://localhost:8888/userstory/"
     baseurl = "https://rallyhelper3.herokuapp.com/userstory/"
