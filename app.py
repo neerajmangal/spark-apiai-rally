@@ -37,9 +37,12 @@ def processRequest(req):
     baseurl = "https://rallyhelper3.herokuapp.com/userstory/"
     parameters = req.get("result").get("parameters")
     userStoryNumber = parameters.get("UsNumber")
-    
+    print baseurl
+    print parameters
+    print userStoryNumber
     
     if req.get("result").get("action") != "rallyGetStoryDetails":
+        print "got the get details"
         resp = requests.get(baseurl+"US"+userStoryNumber,
                 headers={'Content-Type': 'Application/Json'})
         response = json.loads(resp.text)
