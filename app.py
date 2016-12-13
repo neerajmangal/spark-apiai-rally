@@ -36,12 +36,8 @@ def processRequest(req):
     #baseurl = "http://localhost:8888/userstory/"
     baseurl = "https://rallyhelper3.herokuapp.com/userstory/"
     parameters = req.get("result").get("parameters")
-    state = parameters.get("State")
-    print state
     userStoryNumber = parameters.get("UsNumber")
-    payload = {
-       "state": state
-    }
+    
     
     if req.get("result").get("action") != "rallyGetStoryDetails":
         resp = requests.get(baseurl+"US"+userStoryNumber,
@@ -50,6 +46,9 @@ def processRequest(req):
         print response
     
     if req.get("result").get("action") != "rallyUpdateState":
+        state = parameters.get("State")
+        print state
+        payload = {"state": state}
         resp = requests.patch(baseurl+userStoryNumber, 
                     headers={'Content-Type': 'Application/Json'},
                     data=json.dumps(payload))
