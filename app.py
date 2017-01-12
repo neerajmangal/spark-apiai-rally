@@ -33,7 +33,7 @@ def processRequest(req):
     if req.get("result").get("action") != "rallyGetStoryDetails" and \
         req.get("result").get("action") != "rallyUpdateState":
         return {}
-    #baseurl = "http://localhost:8888/userstory/"
+    #baseurl = "http://localhost:8080/userstory/"
     baseurl = "https://rallyhelper3.herokuapp.com/userstory/"
     parameters = req.get("result").get("parameters")
     userStoryNumber = parameters.get("UsNumber")
